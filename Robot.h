@@ -17,9 +17,9 @@ public:
     RobotState &GetRobotState();
 private:
     RobotState robotState;
-    SearchProblem* searchProblem;
-    BreadthFirstSearch* searchAlgorithm;
-    WorldMap* map;
+    SearchProblem* searchProblem = nullptr;
+    BreadthFirstSearch* searchAlgorithm = nullptr;
+    WorldMap* map = nullptr;
     void updateWorldMap(QString &frame);
 };
 

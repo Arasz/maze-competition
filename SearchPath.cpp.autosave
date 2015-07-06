@@ -30,7 +30,8 @@ StatesList SearchPath::GetSuccessors(const SearchState &state)
 {
     ActionsList list = {"RotateLeft", "RotateRight", "Wait", "Rush", "FastForward", "Forward"};
     StatesList successors;
-    SearchState* newState = nullptr;
+    SearchState* newState;
+    
     for(auto action: list)
     {
         if(isMovePossible(action,state,newState))
@@ -86,8 +87,6 @@ bool SearchPath::isMovePossible(Action action, const SearchState &state, SearchS
     Vec2d orientationVec = converter.GetOrientationVector(state.getOrientation());
     Vec2d position = state.getPosition();
 
-    if(newState != nullptr)
-        delete newState;
 
     if(actionTranslationMap[action] == 0)
     {

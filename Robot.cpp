@@ -5,7 +5,7 @@ Robot::Robot()
 {
     map = new WorldMap();
     searchProblem = new SearchPath(this, map);
-    searchAlgorithm = new BreadthFirstSearch(searchProblem);
+
 }
 
 Robot::~Robot()
@@ -27,6 +27,9 @@ void Robot::GetInformations(QString rot, QString tran, QString &&frame)
 
 ActionsList Robot::MakeDecisions()
 {
+    if(searchAlgorithm == nullptr)
+         searchAlgorithm = new BreadthFirstSearch(searchProblem);
+
     return searchAlgorithm->Search();
 }
 
