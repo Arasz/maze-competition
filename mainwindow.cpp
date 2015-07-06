@@ -99,6 +99,8 @@ void MainWindow::new_message()
         robot->GetInformations(ui->rotationEdit->text(),
                 ui->translationEdit->text(),localMap.mid(4));
         ActionsList actions = robot->MakeDecisions();
+        if(actions.empty())
+            actions.push_back("RotateRight");
 
         for(auto action: actions)
         {

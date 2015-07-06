@@ -16,6 +16,7 @@ public:
     // SearchProblem interface
     SearchState GetStartState() override;
     bool isGoalState(const SearchState& state) override;
+    SearchState getNewState(Action action, const SearchState &state);
     StatesList GetSuccessors(const SearchState& state) override;
     double GetCostOfActions(ActionsList actions) override;
     int EarseDots(Vec2d &oldPosition, Vec2d &newPosition, bool local);
@@ -26,9 +27,11 @@ protected:
                                       ,{"Rush",3},{"FastForward",2},{"Forward",1}};
     std::map<Action,QChar> actionRotationMap = {{"RotateLeft",'L'},{"RotateRight",'R'}, {"Wait",'0'}};
 
+    int falseGoalCounter = 0;
+
     int countDots();
     Vec2d findGoalPosition();
-    bool isMovePossible(Action action, const SearchState& state, SearchState* newState);
+    bool isMovePossible(Action action, const SearchState& state);
 };
 
 #endif // FINDALLDOTS_H

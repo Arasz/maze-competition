@@ -24,6 +24,9 @@ public:
 
     bool operator<(const SearchState& state) const;
 
+    bool operator== (const SearchState& state) const;
+
+
 private:
     Vec2d position;
     Orientation orientation;

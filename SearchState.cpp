@@ -7,7 +7,6 @@ SearchState::SearchState(Vec2d position, Orientation orientation, int dotsAmount
 
 SearchState::SearchState()
 {
-
 }
 Vec2d SearchState::getPosition() const
 {
@@ -65,9 +64,23 @@ ActionsList SearchState::getActions() const
 
 bool SearchState::operator<(const SearchState &state) const
 {
-    return this->dotsAmount < state.dotsAmount;
+    if(this->position < state.position)
+        return true;
+    if(this->dotsAmount < state.dotsAmount)
+        return true;
+    if(this->orientation < state.orientation)
+        return true;
+    else
+        return false;
 }
 
+bool SearchState::operator==(const SearchState &state) const
+{
+    if(this->position == state.position && this->orientation == state.orientation && this->dotsAmount == state.dotsAmount)
+        return true;
+    else
+        return false;
+}
 
 
 

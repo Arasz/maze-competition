@@ -3,7 +3,7 @@
 BreadthFirstSearch::BreadthFirstSearch(SearchProblem* problem)
 {
     this->problem = problem;
-    this->fringe.push(problem->GetStartState());
+    //this->fringe.push(problem->GetStartState());
 }
 
 BreadthFirstSearch::BreadthFirstSearch(SearchProblem* problem, int searchDepth):
@@ -20,7 +20,9 @@ void BreadthFirstSearch::ChangeSearchDepth(int newDepth)
 ActionsList BreadthFirstSearch::Search()
 {
     depthCounter=0;
-    while(depthCounter<=searchDepth)
+    std::queue<SearchState>().swap(this->fringe); // Clear fringe
+    this->fringe.push(problem->GetStartState());
+    while(true || depthCounter<=searchDepth)
     {
         depthCounter++;
         if( fringe.empty()) // If there is no next state return empty action list
@@ -38,8 +40,8 @@ ActionsList BreadthFirstSearch::Search()
                 fringe.push(successor); // Add new states to the fringe
             }
         }
-        actionsList = node.getActions();
+        //actionsList = node.getActions();
     }
-    return actionsList;
+   // return actionsList;
 }
 
